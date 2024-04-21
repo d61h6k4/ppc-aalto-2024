@@ -2,9 +2,9 @@
 
 > ppc - stands for Programming Parallel Computers.
 
-The repository contains soultions of the excersises of the Aalto university course of programming parallel computers for 2024.
+The repository contains solutions for the exercises of the Aalto University course on programming parallel computers for 2024.
 
-[Link](https://ppc-exercises.cs.aalto.fi/course/aalto2024) to the page with exercsises.
+[Link](https://ppc-exercises.cs.aalto.fi/course/aalto2024) to the page with exercises.
 
 #### Usage
 

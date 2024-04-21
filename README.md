@@ -17,5 +17,5 @@ bazel test //exercises/pre0:pre0_test --test_output=all
 Run benchmarks for exercises (e.g. pre0)
 
 ```bash
-bazel test //exercises/pre0:pre0_benchmark --test_output=all
+bazel test -c opt //exercises/pre0:pre0_benchmark --test_output=all
 ```

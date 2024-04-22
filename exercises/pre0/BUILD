@@ -20,7 +20,7 @@ cc_test(
   size = "small",
   srcs = ["pre0_benchmark.cc"],
   deps = [
-    "pre0",
+    ":pre0",
     "@google_benchmark//:benchmark_main",
   ]
 )

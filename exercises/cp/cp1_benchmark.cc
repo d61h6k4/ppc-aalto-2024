@@ -4,15 +4,16 @@
 #include "exercises/cp/cp1.h"
 #include <algorithm>
 #include <random>
+#include <vector>
 
 namespace {
 
 std::vector<float> generate_data(int ny, int nx) {
   std::vector<float> res;
-  res.resize(ny * nx * 3);
+  res.resize(ny * nx);
 
   static std::mt19937 rng;
-  std::generate_n(res.begin(), ny * nx * 3, rng);
+  std::generate_n(res.begin(), ny * nx, rng);
 
   return res;
 }

@@ -40,7 +40,7 @@ TEST(Cp1Test, SmallExampleCheck) {
   }
 }
 
-TEST(Cp1Test, DISABLED_ImageExampleCheck) {
+TEST(Cp1Test, ImageExampleCheck) {
   auto r = ppc::read_png_file("testdata/1d.png");
   std::vector<float> result;
   result.resize(r->height * r->height);

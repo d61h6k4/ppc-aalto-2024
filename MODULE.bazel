@@ -6,15 +6,26 @@
 ###############################################################################
 module(version = "0.1.0", repo_name = "ppc_aalto_2024")
 
-
+bazel_dep(name = "platforms", version = "0.0.9")
+bazel_dep(name = "bazel_skylib", version = "1.6.0")
 bazel_dep(name = "apple_support", version = "1.15.1", repo_name = "build_bazel_apple_support")
 bazel_dep(name = "google_benchmark", version = "1.8.3")
 bazel_dep(name = "googletest", version = "1.14.0")
 bazel_dep(name = "libpng", version = "1.6.43")
 
+
+bazel_dep(name = "highway", version = "1.1.0")
+archive_override(
+    module_name = "highway",
+    urls = "https://github.com/google/highway/archive/refs/tags/1.1.0.tar.gz",
+    integrity = "sha256-NUqLRTm1iOcLmOxwhEJz4/J0EwLEw3e8xOgbPRhm98k=",
+    strip_prefix = "highway-1.1.0",
+    patches = ["//third_party:highway_module_bazel.patch"],
+)
+
 # linter
-bazel_dep(name = "aspect_rules_lint", version = "0.14.1")
-bazel_dep(name = "buildifier_prebuilt", version = "6.4.0")
+bazel_dep(name = "aspect_rules_lint", version = "0.14.1", dev_dependency = True)
+bazel_dep(name = "buildifier_prebuilt", version = "6.4.0", dev_dependency = True)
 
 # Hedron's Compile Commands Extractor for Bazel
 # https://github.com/hedronvision/bazel-compile-commands-extractor

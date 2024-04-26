@@ -1,5 +1,5 @@
 
-#include "exercises/cp/cp1.h"
+#include "exercises/cp/cp2a.h"
 #include <cmath>
 #include <cstddef>
 #include <functional>
@@ -25,8 +25,7 @@ float l2_norm(std::span<const float, std::dynamic_extent> v, float v_mean) {
 }
 
 void corelate(int ny, int nx, const float *data, float *result) {
-  std::vector<float> norm_data;
-  norm_data.resize(ny * nx);
+  std::vector<float> norm_data(ny * nx);
 
   for (auto i = 0; i < ny; ++i) {
     auto x = std::span(data + i * nx, static_cast<size_t>(nx));
@@ -38,9 +37,10 @@ void corelate(int ny, int nx, const float *data, float *result) {
   }
 
   for (auto i = 0; i < ny; ++i) {
+    auto x = std::span(norm_data.begin() + i * nx, static_cast<size_t>(nx));
+
     for (auto j = i; j < ny; ++j) {
 
-      auto x = std::span(norm_data.begin() + i * nx, static_cast<size_t>(nx));
       auto y = std::span(norm_data.begin() + j * nx, static_cast<size_t>(nx));
 
       result[i + j * ny] =

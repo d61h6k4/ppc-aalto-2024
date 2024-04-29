@@ -24,12 +24,15 @@ static void BM_bench_small_kernel_mf(benchmark::State &state) {
   result.resize(state.range(0) * state.range(0));
 
   for (auto _ : state) {
-      ppc::mf(state.range(0), state.range(0), 3, 3, data.data(), result.data());
+    ppc::mf(state.range(0), state.range(0), 10, 10, data.data(), result.data());
   }
 }
 
-BENCHMARK(BM_bench_small_kernel_mf)->RangeMultiplier(2)->Range(8, 2 << 10);
-
+BENCHMARK(BM_bench_small_kernel_mf)
+    ->Args({100, 100})
+    ->Args({500, 500})
+    ->Args({1000, 1000})
+    ->Args({1500, 1500});
 
 static void BM_bench_big_kernel_mf(benchmark::State &state) {
   auto data = generate_data(state.range(0), state.range(0));
@@ -37,10 +40,10 @@ static void BM_bench_big_kernel_mf(benchmark::State &state) {
   result.resize(state.range(0) * state.range(0));
 
   for (auto _ : state) {
-      ppc::mf(state.range(0), state.range(0), 50, 50, data.data(), result.data());
+    ppc::mf(state.range(0), state.range(0), 50, 50, data.data(), result.data());
   }
 }
 
-BENCHMARK(BM_bench_big_kernel_mf)->RangeMultiplier(2)->Range(128, 2 << 10);
+// BENCHMARK(BM_bench_big_kernel_mf)->RangeMultiplier(2)->Range(128, 256);
 
 } // namespace

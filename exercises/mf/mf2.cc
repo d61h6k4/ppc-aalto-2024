@@ -8,7 +8,7 @@
 
 namespace ppc {
 void mf(int ny, int nx, int hy, int hx, const float *in, float *out) {
-  hwy::ThreadPool pool(8);
+  hwy::ThreadPool pool(hwy::ThreadPool::MaxThreads());
   pool.Run(0, ny, [&](uint64_t y, size_t /* thread */) {
     for (auto x = 0; x < nx; ++x) {
 
